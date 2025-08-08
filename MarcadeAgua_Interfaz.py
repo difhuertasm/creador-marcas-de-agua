@@ -4,10 +4,7 @@ from tkinter import filedialog as fd
 import tkinter as tk
 from tkinter import ttk
 
-'''______________________ESPACIO PARA FUNCIONES_____________________________________'''
-
-ruta_archivo = ""  # Variable global para almacenar la ruta del archivo seleccionado
-#La variable global sirve para ser utilizada y modificada dentro de las funciones buscar_archivo() y MarcadeAgua()
+ruta_archivo = "" 
 
 def buscar_archivo():
     #Abre un diálogo para seleccionar una imagen y almacena la ruta en la variable global.
@@ -24,7 +21,7 @@ def MarcadeAgua():
         messagebox.showerror("Error", "Primero debes seleccionar un archivo.")
         return None
 
-    tamano_fuente = 100 #Tamaño de fuente presdeterminada
+    tamano_fuente = 100 #Tamaño de fuente predeterminada
     imagen = Image.open(ruta_archivo).convert("RGBA")
 
     # Elección carga de fuente
@@ -77,15 +74,13 @@ def GuardarArchivo():
         messagebox.showinfo("Éxito", "Imagen guardada como 'resultado2.png'.")
         Label(ventana, text="Imagen guardada exitosamente.", bg= "#BEF1CC", fg='#022212', font = ("Arial", 15)).place(x=250, y=190)
 
-'''______________________ESPACIO PARA INTERFAZ GRÁFICA Y COMPONENTES___________'''
+'''______________________INTERFAZ GRÁFICA Y COMPONENTES___________'''
 
-# Crear ventana
 ventana = Tk()
 ventana.title("Watermarks Maker WM")
 ventana.minsize(width=640, height=300)
 ventana.config(padx=35, pady=35, bg='#BEF1CC')
 
-# Etiquetas y botones
 Label(ventana, text="1. Seleccione el documento", bg='#BEF1CC', fg="#3A3A3A").place(x=0, y=0)
 boton_buscar = tk.Button(ventana, text="Buscar Archivo", bg='#022212', fg="#BEF1CC", command=buscar_archivo)
 boton_buscar.place(x=0, y=30)
@@ -105,12 +100,10 @@ lista2 = ttk.Combobox(ventana, values=["Arial", "Arial Black"])
 lista2.place(x=200, y=140)
 
 Label(ventana, text="5. Ángulo de rotación", bg='#BEF1CC', fg="#3A3A3A").place(x=400, y=110)
-lista3 = ttk.Combobox(ventana, values=["0", "45", "65"])  # "número" Asegurar que son strings
+lista3 = ttk.Combobox(ventana, values=["0", "45", "65"]) 
 lista3.place(x=400, y=140)
 
-# Botón para generar archivo
 boton_generar = tk.Button(ventana, text="Generar Archivo con marca", bg='#022212',fg="#BEF1CC", command=GuardarArchivo)
 boton_generar.place(x=0, y=190)
 
-# Ejecutar ventana
 ventana.mainloop()
