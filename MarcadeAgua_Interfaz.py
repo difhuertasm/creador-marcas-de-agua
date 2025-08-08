@@ -13,15 +13,19 @@ def buscar_archivo():
                                       filetypes=[("Imágenes", "*.png;*.jpg")])
     if ruta_archivo:
         etiqueta1.config(text="Archivo seleccionado.")
-
+        
 def MarcadeAgua():
-    #Aplica una marca de agua a la imagen seleccionada y devuelve la imagen modificada.
+    """
+    Aplica una marca de agua personalizada sobre una imagen.
+    La marca incluye texto, color, fuente y rotación definidos por el usuario.
+    Retorna la imagen modificada.
+    """
     global ruta_archivo
     if not ruta_archivo:
         messagebox.showerror("Error", "Primero debes seleccionar un archivo.")
         return None
 
-    tamano_fuente = 100 #Tamaño de fuente predeterminada
+    tamano_fuente = 100 
     imagen = Image.open(ruta_archivo).convert("RGBA")
 
     # Elección carga de fuente
